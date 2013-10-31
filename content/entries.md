@@ -4,15 +4,15 @@ Entries
 Get Entries
 -----------
 
- - `GET /v1/entries.json` will return all entries in a user's queue.
+ - `GET /v1/entries.json` will return all entries in a user's queue that have not been archived.
 
 ```json
 [{}]
 ```
 
-| Parameter | Required | Example                                                             |
-|-----------|----------|---------------------------------------------------------------------|
-| `test`    | true     | `GET some example` will something something                         |
+| Parameter              | Required | Example                                                                                                                                              |
+|------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `archived: boolean`    | false    | `GET /v1/entries.json?archive=false` will return entries on the queue that have not been archived. If no value is specified, default value is `true`.|
 
 **Status Codes**
 
@@ -48,7 +48,7 @@ Create Entry
 
 **Status Codes**
 
-- `201 Created`
+- `201 Created` will be returned if the addition to the queue is successful.
 - `302 Found` will be returned if the audio URL is already part of the user's queue.
 - `404 Not Found` will be returned if the audio URL provided does not exist.
 
